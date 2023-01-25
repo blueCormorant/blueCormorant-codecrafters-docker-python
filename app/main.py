@@ -9,7 +9,7 @@ def main():
         cmd = "echo"
         output_stream = sys.stdout
     elif args[0] == "echo_stderr":
-        mcd = "echo"
+        cmd = "echo"
         output_stream = sys.stderr
     else:
         raise Exception("Command not recognized")    
