@@ -15,7 +15,7 @@ def main():
         raise Exception("Command not recognized")    
 
     completed_process = subprocess.run([command, *args], capture_output=True)
-    print(completed_process.stdout.decode("utf-8"), file=output_stream)
+    print(completed_process.stdout.decode("utf-8").strip(), file=output_stream)
 
 if __name__ == "__main__":
     main()
