@@ -1,11 +1,18 @@
 import subprocess
 import sys
+import tempfile
+import os
 
 def main():
 
     command = sys.argv[3]
     args = sys.argv[4:]
     
+    with tempfile.TemporaryDirectory() as tmp_path:
+        os.system(f'mkdir -p {tmp_path}{command}')
+        os.system(f'cp {command} {tmp_path}{command}')
+        os.chroot(tmp_path)
+
     completed_process = subprocess.run([command, *args], capture_output=True)
 
     if completed_process.returncode == 0:
